@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.portfoliomaker.backend.dto.UserDTO;
 import com.portfoliomaker.backend.entity.User;
 import com.portfoliomaker.backend.service.UserService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/users")
@@ -24,26 +27,26 @@ public class UserController {
 
     // CREATE
     @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
+    public UserDTO registerUser(@Valid @RequestBody User user){
         return userService.register(user);
     }
 
     // READ ALL
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 
     // READ BY ID
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
+    public UserDTO getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     // UPDATE
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id,
-                           @RequestBody User user) {
+    public UserDTO updateUser(@PathVariable Long id,
+                              @Valid @RequestBody User user) {
         return userService.updateUser(id, user);
     }
 
