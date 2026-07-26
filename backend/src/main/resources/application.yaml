@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: backend
@@ -11,9 +14,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
     show-sql: true
-
+    open-in-view: false
     properties:
       hibernate:
         format_sql: true
@@ -21,3 +23,7 @@ spring:
   devtools:
     restart:
       enabled: true
+
+jwt:
+  secret: portfolioMakerSecretKey123456789portfolioMakerSecretKey123456789
+  expiration: 86400000
